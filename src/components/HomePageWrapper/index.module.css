@@ -1,0 +1,20 @@
+.homePicture {
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.textContainer {
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.homeText {
+  color: var(--main-text);
+  line-height: 1.5;
+  font-size: 20px;
+  text-align: justify;
+  margin-bottom: 16px;
+}
