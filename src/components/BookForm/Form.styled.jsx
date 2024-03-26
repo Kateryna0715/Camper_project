@@ -2,16 +2,13 @@ import { Form, Field, ErrorMessage } from 'formik';
 import { styled } from 'styled-components';
 
 export const FormContainer = styled.div`
-  width: 100%;
   max-width: 448px;
-  box-sizing: border-box;
-  padding: 24px;
 `;
 export const StyledForm = styled(Form)`
-  width: 100%;
-  max-width: 448px;
   border-radius: 10px;
   border: 1px solid rgba(16, 24, 40, 0.2);
+  padding: 24px;
+  width: 100%;
   box-sizing: border-box;
 `;
 
@@ -19,41 +16,46 @@ export const FormHeader = styled.p`
   color: #101828;
   font-size: 20px;
   font-weight: 600;
-  line-height: 24px;
+  line-height: 1.2;
   margin-bottom: 8px;
 `;
 export const FormText = styled.p`
   color: #101828;
   font-size: 16px;
   font-weight: 400;
-  line-height: 24px;
+  line-height: 1.5;
   margin-bottom: 24px;
   align-self: stretch;
 `;
 
 export const InputContainer = styled.div`
   margin-bottom: 14px;
+  max-width: 400px;
+  width: 100%;
 `;
 export const StyledInput = styled(Field)`
   border: none;
   border-radius: 10px;
+  box-sizing: border-box;
   width: 100%;
-  /* max-width: 400px; */
+  max-width: 400px;
   padding: 18px;
   background-color: #f7f7f7;
-  outline: transparent;
-  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: Inter;
+  outline: none;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  &:placeholder {
+  &::placeholder {
+    font-family: Inter;
     color: rgba(16, 24, 40, 0.6);
-    line-height: 20px;
+    line-height: 1.25;
     font-weight: 400;
     font-size: 16px;
   }
 
-  &:hover,
-  &:focus {
-    border: 1px solid rgba(16, 24, 40, 0.2);
+  &:hover::placeholder,
+  &:focus::placeholder {
+    color: #101828;
   }
 `;
 
@@ -93,23 +95,28 @@ export const DateButton = styled.span`
 export const StyledTextarea = styled.textarea`
   border: none;
   border-radius: 10px;
+  box-sizing: border-box;
+  resize: none;
   width: 100%;
   max-width: 400px;
+  height: 114px;
   padding: 18px 18px 76px 18px;
   background-color: #f7f7f7;
+  font-family: Inter;
   outline: transparent;
-  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  &:placeholder {
+  &::placeholder {
+    font-family: Inter;
     color: rgba(16, 24, 40, 0.6);
-    line-height: 20px;
+    line-height: 1.25;
     font-weight: 400;
     font-size: 16px;
   }
 
-  &:hover,
-  &:focus {
-    border: 1px solid rgba(16, 24, 40, 0.2);
+  &:hover::placeholder,
+  &:focus::placeholder {
+    color: #101828;
   }
 `;
 

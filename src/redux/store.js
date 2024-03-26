@@ -9,7 +9,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-import { campersReducer } from './campers/operations';
+import { campersReducer } from './campers/campersSlice';
 import { persistReducerFavorites } from './favorites/favoritesSlice';
 // import { filterReducer } from './boards/filterSlice';
 

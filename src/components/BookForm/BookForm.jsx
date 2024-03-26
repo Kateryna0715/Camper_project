@@ -1,8 +1,8 @@
 import { Formik } from 'formik';
-// import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 
 import BokingSchema from './BokingSchema';
-import sprite from '../../assets/svgSprite/symbol-defs.svg';
+import sprite from '../../assets/svgSprite/sprite.svg';
 import {
   FormContainer,
   StyledForm,
@@ -17,28 +17,30 @@ import {
   DateButton,
   StyledTextarea,
 } from './Form.styled';
+import Calendar from 'react-calendar';
 
 const BookForm = () => {
-  //   const dispatch = useDispatch();
+  const [calendarValue, onChangeCalendar] = useState(new Date());
+  const [showCalendar, setShowCalendar] = useState(false);
+
+  const handleChange = date => {
+    onChangeCalendar(date);
+    setShowCalendar(false);
+  };
 
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
     setSubmitting(true);
-    // const email = values.email;
-    // const password = values.password;
 
-    // dispatch(
-    //   logIn({
-    //     email,
-    //     password,
-    //   })
-    // );
+    console.log(values);
     resetForm();
     setSubmitting(false);
   };
 
   const initialValues = {
+    name: '',
     email: '',
-    password: '',
+    booking_date: null,
+    comment: '',
   };
 
   return (
@@ -51,6 +53,8 @@ const BookForm = () => {
         <StyledForm autoComplete="off">
           <FormHeader>Book your campervan now</FormHeader>
           <FormText>Stay connected! We are always ready to help you.</FormText>
+
+          <StyledErrorMessage name="name" component="span" />
           <InputContainer>
             <label htmlFor="name" />
             <StyledInput
@@ -60,45 +64,45 @@ const BookForm = () => {
               placeholder="Name"
               autoComplete="off"
             />
-            <StyledErrorMessage name="name" component="span" />
           </InputContainer>
 
+          <StyledErrorMessage name="email" component="span" />
           <InputContainer>
             <label htmlFor="email" />
             <StyledInput
-              type="text"
+              type="email"
               id="email"
               name="email"
               placeholder="Email"
               autoComplete="off"
             />
-            <StyledErrorMessage name="email" component="span" />
           </InputContainer>
 
           <DateInputContainer>
+            <StyledErrorMessage name="booking_date" component="span" />
             <label htmlFor="booking_date" />
             <StyledInputDate
-              type="text"
               id="booking_date"
               name="booking_date"
               placeholder="Booking date"
+              value={calendarValue}
+              required
               autoComplete="off"
             />
-            <DateButton
-              type="button"
-              //   onClick={openCalendar}
-            >
+            <DateButton type="button" onClick={() => setShowCalendar(true)}>
               <svg width="20" height="20" fill="none" className="icon">
                 <use xlinkHref={`${sprite}#icon-calendar`} />
               </svg>
             </DateButton>
-            <StyledErrorMessage name="booking_date" component="span" />
           </DateInputContainer>
+          {showCalendar && (
+            <Calendar onChange={handleChange} value={calendarValue} />
+          )}
 
           <InputContainer>
             <label htmlFor="comment" />
             <StyledTextarea
-              type="textarea"
+              component="textarea"
               id="comment"
               name="comment"
               placeholder="Comment"

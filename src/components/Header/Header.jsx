@@ -1,6 +1,6 @@
 import { Link, NavLink } from 'react-router-dom';
 import css from './index.module.css';
-import sprite from '../../assets/svgSprite/symbol-defs.svg';
+import sprite from '../../assets/svgSprite/sprite.svg';
 
 const Header = () => {
   return (

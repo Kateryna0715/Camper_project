@@ -7,7 +7,10 @@ const BokingSchema = Yup.object().shape({
   email: Yup.string()
     .email('Please enter valid email')
     .required('Email is required!'),
-  booking_date: Yup.date().required('Date is required!'),
+  booking_date: Yup.date().min(
+    new Date(),
+    'Booking date must be today or later'
+  ),
 });
 
 export default BokingSchema;

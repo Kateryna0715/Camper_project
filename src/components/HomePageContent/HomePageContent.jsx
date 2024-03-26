@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import css from './index.module.css';
 
-const HomePageWrapper = () => {
+const HomePageContent = () => {
   return (
     <div>
       <h1 className={css.homeTitle}>CAMPER FOR OUTDOOR ACTIVITIES</h1>
@@ -35,4 +35,4 @@ const HomePageWrapper = () => {
   );
 };
 
-export default HomePageWrapper;
+export default HomePageContent;

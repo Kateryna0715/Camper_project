@@ -10,7 +10,7 @@
 .homeContainer {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 20px;
   margin: 24px 0;
 }
 

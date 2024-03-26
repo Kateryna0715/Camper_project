@@ -1,7 +1,7 @@
-import HomePageWrapper from 'components/HomePageWrapper/HomePageWrapper';
+import HomePageContent from 'components/HomePageContent/HomePageContent';
 
 const HomePage = () => {
-  return <HomePageWrapper />;
+  return <HomePageContent />;
 };
 
 export default HomePage;

@@ -88,9 +88,8 @@ img {
 
 .active {
   position: relative;
-  color: var(--red-color);
 }
-/* .active::after {
+.active::after {
   content: '';
   position: absolute;
   left: 0;
@@ -99,7 +98,7 @@ img {
   width: 100%;
   background-color: var(--red-color);
   border-radius: 2px;
-} */
+}
 
 /* @media screen and (min-width: 375px) {
   .container {
