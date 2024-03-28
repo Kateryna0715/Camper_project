@@ -1,5 +1,4 @@
 import CampersItem from 'components/CampersItem.jsx/CampersItem';
-
 import { StyledList } from './CampersList.styled';
 
 const CampersList = ({ campers }) => {

@@ -11,13 +11,18 @@ import {
   StyledHeaderContainer,
   StyledImg,
   StyledItem,
-  StyledItemText,
   StyledPrice,
   StyledPriceContainer,
   StyledRateLocContainer,
   StyledShowMoreButton,
 } from './CampersItem.styled';
 import sprite from '../../assets/svgSprite/sprite.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  addFavorites,
+  removeFavorites,
+} from '../../redux/favorites/favoritesSlice';
+import { selectFavorites } from '../../redux/favorites/selectors';
 
 const CampersItem = ({ camper }) => {
   const {
@@ -33,13 +38,26 @@ const CampersItem = ({ camper }) => {
     details,
     reviews,
   } = camper;
+  const dispatch = useDispatch();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const favorites = useSelector(selectFavorites);
+
   const openModal = () => {
     setIsModalOpen(true);
   };
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  const checkId = favorites.find(el => el._id === camper._id);
+
+  const handleFavorites = () => {
+    if (!checkId) {
+      dispatch(addFavorites(camper));
+      return;
+    }
+    dispatch(removeFavorites(camper._id));
   };
 
   return (
@@ -51,10 +69,16 @@ const CampersItem = ({ camper }) => {
             <StyledHeader>{name}</StyledHeader>
             <StyledPriceContainer>
               <StyledPrice>{`€${price}.00`}</StyledPrice>
-              <StyledFavButton>
-                <svg width="24" height="24" fill="none">
-                  <use xlinkHref={`${sprite}#icon-heart`} />
-                </svg>
+              <StyledFavButton onClick={handleFavorites}>
+                {!checkId ? (
+                  <svg width="24" height="24" fill="#ffffff" stroke="#101828">
+                    <use xlinkHref={`${sprite}#icon-heart`} />
+                  </svg>
+                ) : (
+                  <svg width="24" height="24" fill="#e44848" stroke="#e44848">
+                    <use xlinkHref={`${sprite}#icon-heart`} />
+                  </svg>
+                )}
               </StyledFavButton>
             </StyledPriceContainer>
           </StyledHeaderContainer>
@@ -76,7 +100,7 @@ const CampersItem = ({ camper }) => {
               <svg width="20" height="20" fill="#101828">
                 <use xlinkHref={`${sprite}#icon-people`} />
               </svg>
-              <StyledItemText>{`${adults} adults`}</StyledItemText>
+              <span>{`${adults} adults`}</span>
             </StyledCharactersItem>
 
             <StyledCharactersItem>
@@ -103,7 +127,7 @@ const CampersItem = ({ camper }) => {
               <svg width="20" height="20" fill="none" stroke="#101828">
                 <use xlinkHref={`${sprite}#icon-bed`} />
               </svg>
-              <StyledItemText>{`${details.beds} beds`}</StyledItemText>
+              <span>{`${details.beds} beds`}</span>
             </StyledCharactersItem>
             <StyledCharactersItem>
               <svg width="20" height="20" fill="#101828" stroke="#101828">

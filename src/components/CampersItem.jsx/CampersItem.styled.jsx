@@ -56,16 +56,13 @@ export const StyledFavButton = styled.button`
   justify-content: center;
   align-items: center;
   background-color: transparent;
-  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1) transform 0.3s ease 0s;
-
-  svg {
-    stroke: #101828;
-  }
+  transition: transform 0.3s ease 0s, stroke 250ms linear;
 
   &:hover,
   &:focus {
     transform: scale(1.1);
   }
+
   svg:hover,
   svg:focus {
     stroke: #d84343;
@@ -123,9 +120,7 @@ export const StyledCharactersItem = styled.li`
   gap: 8px;
   border-radius: 100px;
   background: #f2f4f7;
-`;
 
-export const StyledItemText = styled.span`
   color: #101828;
   text-align: center;
   font-family: Inter;
