@@ -1,5 +1,7 @@
 import { Formik } from 'formik';
 import { useState } from 'react';
+import 'react-datepicker/dist/react-datepicker.css';
+import './style.css';
 
 import BokingSchema from './BokingSchema';
 import sprite from '../../assets/svgSprite/sprite.svg';
@@ -14,23 +16,15 @@ import {
   FormText,
   DateInputContainer,
   StyledInputDate,
-  DateButton,
   StyledTextarea,
 } from './Form.styled';
-import Calendar from 'react-calendar';
 
-const BookForm = () => {
-  const [calendarValue, onChangeCalendar] = useState(new Date());
-  const [showCalendar, setShowCalendar] = useState(false);
-
-  const handleChange = date => {
-    onChangeCalendar(date);
-    setShowCalendar(false);
-  };
+const BookingForm = () => {
+  const [date, setDate] = useState(null);
 
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
     setSubmitting(true);
-
+    // console.log('Date', values.date);
     console.log(values);
     resetForm();
     setSubmitting(false);
@@ -39,7 +33,7 @@ const BookForm = () => {
   const initialValues = {
     name: '',
     email: '',
-    booking_date: null,
+    date: '',
     comment: '',
   };
 
@@ -78,31 +72,26 @@ const BookForm = () => {
             />
           </InputContainer>
 
+          <StyledErrorMessage name="date" component="span" />
           <DateInputContainer>
-            <StyledErrorMessage name="booking_date" component="span" />
-            <label htmlFor="booking_date" />
             <StyledInputDate
-              id="booking_date"
-              name="booking_date"
-              placeholder="Booking date"
-              value={calendarValue}
-              required
+              minDate={new Date()}
+              calendarStartDay={1}
+              dateFormat="dd.MM.yyyy"
+              selected={date}
+              onChange={val => setDate(val)}
+              placeholderText="Booking date"
               autoComplete="off"
             />
-            <DateButton type="button" onClick={() => setShowCalendar(true)}>
-              <svg width="20" height="20" fill="none" className="icon">
-                <use xlinkHref={`${sprite}#icon-calendar`} />
-              </svg>
-            </DateButton>
+            <svg width="20" height="20" fill="none" className="icon">
+              <use xlinkHref={`${sprite}#icon-calendar`} />
+            </svg>
           </DateInputContainer>
-          {showCalendar && (
-            <Calendar onChange={handleChange} value={calendarValue} />
-          )}
 
           <InputContainer>
             <label htmlFor="comment" />
             <StyledTextarea
-              component="textarea"
+              as="textarea"
               id="comment"
               name="comment"
               placeholder="Comment"
@@ -117,4 +106,4 @@ const BookForm = () => {
   );
 };
 
-export default BookForm;
+export default BookingForm;

@@ -6,22 +6,24 @@ const Modal = ({ onClose, children }) => {
   const handleClose = () => {
     onClose();
   };
-  const handleBackdropClick = event => {
-    if (event.currentTarget === event.target) {
+
+  const handleBackdropClick = e => {
+    if (e.currentTarget === e.target) {
       onClose();
     }
   };
+
   useEffect(() => {
-    const handleKeydown = event => {
-      if (event.code === 'Escape') {
-        onClose();
-      }
+    const handleEsc = e => {
+      e.code === 'Escape' && onClose();
     };
-    window.addEventListener('keydown', handleKeydown);
+
+    window.addEventListener('keydown', handleEsc);
     return () => {
-      window.removeEventListener('keydown', handleKeydown);
+      window.removeEventListener('keydown', handleEsc);
     };
   }, [onClose]);
+
   return (
     <ModalOverlay onClick={handleBackdropClick}>
       <ModalContent>

@@ -21,9 +21,9 @@ export const ModalContent = styled.div`
   padding: 40px;
   display: inline-flex;
   flex-direction: column;
-  width: 902px;
+  max-width: 902px;
+  width: 100%;
   height: 85vh;
-  gap: 24px;
   overflow-y: auto;
 `;
 
@@ -36,4 +36,11 @@ export const ModalButton = styled.svg`
   fill: none;
   stroke: #101828;
   cursor: pointer;
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1) transform 0.3s ease 0s;
+
+  &:hover,
+  &:focus {
+    stroke: #e44848;
+    transform: scale(1.1);
+  }
 `;

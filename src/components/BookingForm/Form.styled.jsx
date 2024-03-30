@@ -1,4 +1,5 @@
 import { Form, Field, ErrorMessage } from 'formik';
+import ReactDatePicker from 'react-datepicker';
 import { styled } from 'styled-components';
 
 export const FormContainer = styled.div`
@@ -65,45 +66,30 @@ export const StyledErrorMessage = styled(ErrorMessage)`
   font-size: 14px;
 `;
 
-export const DateInputContainer = styled(InputContainer)`
+export const DateInputContainer = styled.div`
   position: relative;
-`;
-
-export const StyledInputDate = styled(StyledInput)`
-  display: flex;
-`;
-
-export const DateButton = styled.span`
-  position: absolute;
-  z-index: 2;
-  right: 18px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  margin-bottom: 14px;
 
   .icon {
+    position: absolute;
+    z-index: 2;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
     stroke: #101828;
-  }
-
-  .icon:hover,
-  .icon:focus {
-    stroke: #e44848;
   }
 `;
 
-export const StyledTextarea = styled.textarea`
+export const StyledInputDate = styled(ReactDatePicker)`
   border: none;
   border-radius: 10px;
   box-sizing: border-box;
-  resize: none;
   width: 100%;
   max-width: 400px;
-  height: 114px;
-  padding: 18px 18px 76px 18px;
+  padding: 18px;
   background-color: #f7f7f7;
   font-family: Inter;
-  outline: transparent;
+  outline: none;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &::placeholder {
@@ -118,6 +104,16 @@ export const StyledTextarea = styled.textarea`
   &:focus::placeholder {
     color: #101828;
   }
+`;
+
+export const StyledTextarea = styled(StyledInput)`
+  resize: none;
+
+  height: 114px;
+  padding: 18px 18px 76px 18px;
+
+  outline: transparent;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 `;
 
 export const SubButton = styled.button`

@@ -1,7 +1,5 @@
 import CamperModal from 'components/CamperModal/CamperModal';
 import Modal from 'components/Modal/Modal';
-import { useState } from 'react';
-
 import {
   StyledCharactersItem,
   StyledCharactersList,
@@ -17,6 +15,8 @@ import {
   StyledShowMoreButton,
 } from './CampersItem.styled';
 import sprite from '../../assets/svgSprite/sprite.svg';
+
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   addFavorites,
@@ -63,7 +63,7 @@ const CampersItem = ({ camper }) => {
   return (
     <>
       <StyledItem>
-        <StyledImg src={gallery[0]} alt={name}></StyledImg>
+        <StyledImg src={gallery[0]} alt={name} />
         <div>
           <StyledHeaderContainer>
             <StyledHeader>{name}</StyledHeader>
