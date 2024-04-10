@@ -10,12 +10,12 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path="/catalog" element={<CatalogPage />} />
+          <Route path="catalog" element={<CatalogPage />} />
           {/* <Route path="catalog/:id" element={<CamperModal />} /> */}
           {/* <Route path="features" element={<Features />} />
             <Route path="reviews" element={<Reviews />} /> */}
           {/* </Route> */}
-          <Route path="/favorites" element={<FavoritesPage />} />
+          <Route path="favorites" element={<FavoritesPage />} />
 
           <Route path="*" element={<HomePage />} />
         </Route>
